@@ -2,6 +2,9 @@ using OnlineInventory.Utility.HelperClass;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineInventory.Repository;
+using OnlineInventory.Repository.BillService;
+using OnlineInventory.Repository.BillTypeService;
+using OnlineInventory.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -9,11 +12,12 @@ var connectionString = builder.Configuration.GetConnectionString("ApplicationDbC
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentity<AppUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IBillTypeRepo,  BillTypeRepo>();
 builder.Services.Configure<SuperAdmin>(builder.Configuration.GetSection("SuperAdmin"));
 
 var app = builder.Build();

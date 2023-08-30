@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
-namespace OnlineInventory.Models
+namespace OnlineInventory.ViewModels.Bill
 {
-    public class Bill
+    public class BillListViewModel
     {
         public int BillId { get; set; }
         [Display(Name = "Bill / Invoice Number")]
@@ -23,7 +23,7 @@ namespace OnlineInventory.Models
         public DateTimeOffset BillDate { get; set; }
         [Display(Name = "Bill Due Date")]
         public DateTimeOffset BillDueDate { get; set; }
-        [Display(Name= "Bill Type")]
+        [Display(Name = "Bill Type")]
         public int BillTypeId { get; set; }
     }
 }
