@@ -1,0 +1,45 @@
+﻿@using OnlineInventory.Repository.Paging;
+@using OnlineInventory.ViewModels.Bill;
+@model PaginatedList<BillTypeListViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Bill Types";
+}
+
+<div class="row">
+    <div class="col-6">
+        Add New Bill Type
+        <a asp-action"" class="btn btn-primary">Add</a>
+    </div>
+    <div class="col-6">
+        Search Here...
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Bill-Type Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                 <tr>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.BillTypeId)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.BillTypeName)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.Description) 
+                     </td>
+                 </tr>   
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

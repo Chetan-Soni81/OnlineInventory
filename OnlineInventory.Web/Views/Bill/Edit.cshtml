@@ -1,0 +1,37 @@
+﻿@using OnlineInventory.ViewModels.Bill
+@model BillTypeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Edit Bill Type";
+}
+
+<h1>Update</h1>
+
+<h4>BillTypeViewModel</h4>
+
+<div class="row">
+    <div class="col-12 col-md-4">
+        <form asp-action="Edit">
+            <div class="mb-3">
+                <label asp-for="BillTypeId" class="form-label"></label>
+                <input asp-for="BillTypeId" class="form-control" />
+                <span asp-validation-for="BillTypeId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="BillTypeName" class="form-label"></label>
+                <input asp-for="BillTypeName" class="form-control" />
+                <span asp-validation-for="BillTypeName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
